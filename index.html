@@ -5,10 +5,81 @@
         <title> AI IMAGE GALLERY </title>
         <meta name="viewport" content= "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<meta name="HandheldFriendly" content="true" />
+
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@70.2,333;86.3,361&amp;display=swap" rel="stylesheet">
         <link rel = "stylesheet" type = "text/css" href = "assets/main.css" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     </head>
 
     <body>
+        <div id = "loading-page"><h2> Please wait a moment... </h2></div>
+        <div id = "lightbox-overlay"></div>
+        <div id = "wrapper">
+            <div id = "frame">
+                <header>
+                    <div id = "title-bar"> Ai IMAGE GENERATOR </div>
+                    <div id = "info-bar"> 
+                        <p>
+                            Generate an AI modeled image to add to the world wide collection
+                        </p>
+                    </div>
+                </header>
+                <div id = "create-bar"> CREATE + </div>
+                <div id = "view-bar"> VIEW + </div>
+            </div>
 
+            <div id = "home-page-canvas">
+                <div id = "img-preview"></div>
+            </div>
+
+            <div id = "creation-container">
+                <div id = "form-container">
+                    <h1> <span> Please enter your details to proceed </span> </h1>
+                    <input id = "username-input" type = "text" name = "name" placeholder = "name please?" required/>
+                    <input id = "food-input" type = "text" name = "food" placeholder = "food please?" required/>
+                    <input id = "city-input" type = "text" autocomplete="address-level2" placeholder = "city please?" required />
+                    <button id = "submit-button"> Next step </button>
+                </div>
+
+                <div id = "img-upload-container">
+                    <h2> <span> Upload two images. Confirm your selections. Wait for results. </span> </h2>
+                    <button class = "upload-buttons" id = "base1-upload" onclick="document.getElementById('base1-upload-actual').click();"> UPLOAD FILE 1 </button>
+                    <button class = "upload-buttons" id = "base2-upload" onclick="document.getElementById('base2-upload-actual').click();"> UPLOAD FILE 2 </button>
+                    <button id = "confirm-img-button"> CONFIRM </button>
+                    <input id = "base1-upload-actual" type = "file" style = "display: none" />
+                    <input id = "base2-upload-actual" type = "file" style = "display: none" />
+                </div>
+            </div>
+
+            <div id = "final-img-container">
+                <div id = "description-container">
+                    <h2> Your results are ready:</h2>
+                    <h3> IMG1: A raw canvas element of your results </h3>
+                    <h3> IMG2: Your results plastered onto a 3D Decahedron </h3>
+                </div>
+
+                <img id = "base1-img" height = "256" width = "400" />
+                <img id = "base2-img" height = "256" width = "400" />
+                
+                <canvas id = "fusion-img" height = "256" width = "400"></canvas>
+                <a id = "download-button"> DOWNLOAD YOUR IMAGE </a>
+            </div>
+
+            <div id = "view-all-container"></div>
+
+            <footer>
+                <p> @adesignsm </p>
+            </footer>
+        </div>
+
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.10.0/firebase-storage.min.js" integrity="sha512-McmP/lKtqKf61PGCgpofj4nd0AcJ7rZ8HlZGocNta9YVAfXg6/8vJdkY+t+i2A74yoHX1uXGo/FIfwT0myMWHQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type = "text/javascript" src = "scripts/three.js"></script>
+        <script type = "text/javascript" src = "scripts/OrbitControls.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@magenta/image@^0.2.1"></script>
+        <script type = "text/javascript" src = "scripts/main.js"></script>
     </body>
 </html>
